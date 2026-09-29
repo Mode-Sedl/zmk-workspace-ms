@@ -1,6 +1,6 @@
 manifest:
   defaults:
-    revision: v0.3
+    remote: zmkfirmware
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
@@ -10,7 +10,7 @@ manifest:
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
     - name: zmk
-      remote: zmkfirmware
+      revision: 641514a97db345f499dd50b0360e594270f008fe # main (2026-08-31)
       import: app/west.yml
     # ZMK modules
     - name: zmk-helpers
