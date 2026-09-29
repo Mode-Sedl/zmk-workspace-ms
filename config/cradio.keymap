@@ -9,10 +9,10 @@
 #define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
 #define HRMR(k1,k2,k3,k4) &ht RGUI k1  &ht RCTRL k2  &ht RALT k3  &ht RSHFT k4
 
-#define QWERTY 0
-#define RAISE 1
-#define LOWER 2
-#define MOUSE 3
+#define Qwerty 0
+#define Raise 1
+#define Lower 2
+#define Mouse 3
 
 / {
     behaviors {
@@ -29,24 +29,24 @@
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
-        mouse_layer {
-            if-layers = <RAISE LOWER>;
-            then-layer = <MOUSE>;
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
-        qwerty_layer {
+        default_layer {
             bindings = <
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
             HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,        SQT)
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
-                                         &lt Lower TAB  &kp BSPC     &kp SPACE  &lt Raise Enter
+                                            &lt Lower TAB   &kp ENTER     &kp SPACE  &lt 1 BSPC
             >;
         };
 
-        raise_layer {
+        right_layer {
             bindings = <
             &kp INS    &kp N1     &kp N2     &kp N3     &trans         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp COLON
             &kp DEL    &kp N4     &kp N5     &kp N6     &trans         &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp SEMI
@@ -55,7 +55,7 @@
             >;
         };
 
-        lower_layer {
+        left_layer {
             bindings = <
             &trans     &kp LBKT   &kp LBRC   &kp RBRC   &trans         &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
             &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH   &kp GRAVE
@@ -64,7 +64,7 @@
             >;
         };
 
-        mouse_layer {
+        tri_layer {
             bindings = <
            &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset
           &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans     &trans     &trans     &trans    &bootloader
